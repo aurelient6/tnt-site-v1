@@ -83,22 +83,9 @@ export default async function HomePage() {
             <p className="services-intro">Découvrez notre gamme complète de services pour le bien-être de votre compagnon</p>
             <div className="services-grid">
               {services.slice(0, 6).map((service, index) => {
-                // Define gradient colors for each service
-                const getServiceGradient = (index) => {
-                  const gradients = [
-                    'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                    'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-                    'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-                    'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
-                    'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-                    'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
-                  ];
-                  return gradients[index % gradients.length];
-                };
-                
                 return (
                   <a key={service.id} href={`${ROUTES.service}/${service.slug}`} className="service-card-mini">
-                    <div className="service-icon-wrapper" style={{ background: getServiceGradient(index) }}>
+                    <div className="service-icon-wrapper">
                       <div className="service-icon">
                         {getServiceIcon(service.name)}
                       </div>
@@ -118,7 +105,7 @@ export default async function HomePage() {
           </div>
         </section>
         <ActualitesCarousel actualites={actualitesTriees} />
-         <section className='equipe' id="equipe">
+        <section className='equipe' id="equipe">
           <h2>Notre équipe</h2>
           <div className="equipe-grid">
             {equipeData.equipe.map((membre) => (

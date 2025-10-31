@@ -462,6 +462,7 @@ h2::after {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   position: relative;
+  background-color: var(--principale);
 }
 
 .service-card-mini:hover .service-icon-wrapper {
@@ -594,7 +595,7 @@ h2::after {
   justify-items: center;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 80px 15px 40px;
+  padding: 40px 15px 40px;
 }
 
 /* Responsive adjustments */

@@ -8,6 +8,7 @@ import ActualitesCarousel from './components/ActualitesCarousel.js';
 import { INFORMATIONS } from './constantes/infos.js';
 import { ROUTES } from './constantes/routes';
 import Image from 'next/image';
+import { getServiceIcon } from './components/ServiceIcons.js';
 
 export default async function HomePage() {
   const actualitesTriees = actualitesData.actualites.sort((a, b) => b.id - a.id);
@@ -29,26 +30,6 @@ export default async function HomePage() {
             <span>↓</span>
           </div>
         </section>
-        <section className='stats-section'>
-          <div className="stats-container">
-            <div className="stat-item">
-              <div className="stat-number">{services.length}+</div>
-              <div className="stat-label">Services</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-number">{equipeData.equipe.length}</div>
-              <div className="stat-label">Professionnels</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-number">100%</div>
-              <div className="stat-label">Passion</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-number">5★</div>
-              <div className="stat-label">Satisfaction</div>
-            </div>
-          </div>
-        </section>
 
         <section className='description'>
           <div className="description-content">
@@ -61,17 +42,17 @@ export default async function HomePage() {
               </p>
               <div className="features-grid">
                 <div className="feature-item">
-                  <div className="feature-icon">🐾</div>
+                  <div className="feature-icon"></div>
                   <h3>Expertise</h3>
                   <p>Professionnels qualifiés et passionnés</p>
                 </div>
                 <div className="feature-item">
-                  <div className="feature-icon">💚</div>
+                  <div className="feature-icon"></div>
                   <h3>Bien-être</h3>
                   <p>Le confort de votre animal avant tout</p>
                 </div>
                 <div className="feature-item">
-                  <div className="feature-icon">🏆</div>
+                  <div className="feature-icon"></div>
                   <h3>Qualité</h3>
                   <p>Services premium et équipements modernes</p>
                 </div>
@@ -101,15 +82,33 @@ export default async function HomePage() {
             <h2>Nos Services</h2>
             <p className="services-intro">Découvrez notre gamme complète de services pour le bien-être de votre compagnon</p>
             <div className="services-grid">
-              {services.slice(0, 6).map((service) => (
-                <a key={service.id} href={`${ROUTES.service}/${service.slug}`} className="service-card-mini">
-                  <div className="service-icon-wrapper">
-                    <span className="service-icon">🐕</span>
-                  </div>
-                  <h3>{service.name}</h3>
-                  <p>En savoir plus →</p>
-                </a>
-              ))}
+              {services.slice(0, 6).map((service, index) => {
+                // Define gradient colors for each service
+                const getServiceGradient = (index) => {
+                  const gradients = [
+                    'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                    'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+                    'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+                    'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+                    'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
+                  ];
+                  return gradients[index % gradients.length];
+                };
+                
+                return (
+                  <a key={service.id} href={`${ROUTES.service}/${service.slug}`} className="service-card-mini">
+                    <div className="service-icon-wrapper" style={{ background: getServiceGradient(index) }}>
+                      <div className="service-icon">
+                        {getServiceIcon(service.name)}
+                      </div>
+                    </div>
+                    <h3>{service.name}</h3>
+                    <p className="service-description-mini">{service.category}</p>
+                    <span className="service-link-arrow">En savoir plus →</span>
+                  </a>
+                );
+              })}
             </div>
             {services.length > 6 && (
               <div className="services-cta">
@@ -118,7 +117,8 @@ export default async function HomePage() {
             )}
           </div>
         </section>
-        <section className='equipe' id="equipe">
+        <ActualitesCarousel actualites={actualitesTriees} />
+         <section className='equipe' id="equipe">
           <h2>Notre équipe</h2>
           <div className="equipe-grid">
             {equipeData.equipe.map((membre) => (
@@ -129,7 +129,6 @@ export default async function HomePage() {
             ))}
           </div>
         </section>
-        <ActualitesCarousel actualites={actualitesTriees} />
       </main>
     </>
   );

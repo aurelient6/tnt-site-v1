@@ -1,0 +1,308 @@
+/* Import Google Font pour un look professionnel */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.main {
+  text-align: center;
+  padding: 80px 20px;
+  background: var(--background-light);
+  min-height: calc(100vh - 100px);
+  position: relative;
+}
+
+.main > div {
+  position: relative;
+  z-index: 2;
+}
+
+/* Titre principal épuré */
+.main h1 {
+  font-family: 'Inter', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  position: relative;
+  letter-spacing: -0.025em;
+}
+
+/* Ligne décorative minimaliste */
+.main h1::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: var(--principale);
+  border-radius: 1px;
+}
+
+.main p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 4rem;
+  font-weight: 400;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  padding-top: 10px;
+}
+
+/* Styles pour les cartes cliquables */
+.service-card {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Supprimer les styles de lien par défaut */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Section services avec espacement propre */
+.services {
+  margin-top: 4rem;
+  padding: 0 1rem;
+}
+
+.services h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 2.5rem;
+  position: relative;
+  display: inline-block;
+  text-align: left;
+}
+
+.services h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: var(--principale);
+  border-radius: 1px;
+}
+
+/* Container pour les cartes */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 300px));
+  gap: 2rem;
+  margin-top: 1rem;
+  justify-content: center;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Cartes professionnelles épurées */
+.service-card {
+  background: var(--background);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: 1px solid #e5e5e5;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: var(--principale);
+}
+
+/* Titre de la carte */
+.card-title {
+  padding: 1.5rem 1.5rem 1rem;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+  background: var(--background);
+  position: relative;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* Container de l'image */
+.card-image {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: var(--background-light);
+  position: relative;
+}
+
+.card-image:empty::before {
+  content: '';
+  position: absolute;
+  inset: 1rem;
+  border-radius: 4px;
+  border: 2px dashed #ddd;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  max-height: 200px;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .card-image img {
+  transform: scale(1.02);
+}
+
+/* Placeholder discret */
+.card-image:empty::after {
+  content: "🐕";
+  font-size: 3rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.3;
+}
+
+/* Prix avec design professionnel */
+.card-price {
+  padding: 1.2rem;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--background);
+  background: var(--principale);
+  margin: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: -0.01em;
+}
+
+/* Animation d'apparition subtile */
+.service-card {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.service-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.service-card:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .main {
+    padding: 60px 15px;
+  }
+  
+  .main h1 {
+    font-size: 2rem;
+  }
+  
+  .main p {
+    font-size: 1rem;
+  }
+  
+  .services h2 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  
+  .cards-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 400px; /* Limit max width on mobile */
+    padding: 0 20px;
+  }
+  
+  .service-card {
+    height: 380px; /* Reduced from 450px */
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding: 40px 10px;
+  }
+  
+  .main h1 {
+    font-size: 1.8rem;
+  }
+  
+  .cards-container {
+    max-width: 350px; /* Even smaller on very small screens */
+    padding: 0 15px;
+    gap: 1.2rem;
+  }
+  
+  .service-card {
+    height: 360px; /* Reduced from 450px */
+  }
+  
+  .card-title {
+    font-size: 1.1rem;
+    padding: 1.2rem 1rem 0.8rem;
+  }
+  
+  .card-image {
+    padding: 1.2rem;
+  }
+  
+  .card-image img {
+    max-height: 180px; /* Slightly smaller image */
+  }
+  
+  .card-price {
+    font-size: 1.2rem;
+    padding: 1rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+  .cards-container {
+    max-width: 320px;
+    padding: 0 10px;
+  }
+  
+  .service-card {
+    height: 340px;
+  }
+  
+  .card-image img {
+    max-height: 160px;
+  }
+}

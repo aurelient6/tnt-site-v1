@@ -64,7 +64,7 @@
 /* Style pour le dernier paragraphe avec emoji */
 .apropos p:last-of-type {
   margin-top: 3rem;
-  padding: 2rem 2.5rem;
+  padding: 2rem 2rem;
   background: var(--principale);
   border-radius: 16px;
   font-family: 'Dancing Script', cursive;

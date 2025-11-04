@@ -5,6 +5,7 @@ export const ROUTES = {
   contact: "/contact",
   equipe: "/#equipe",
   actualites: "/#actualites",
+  apropos: "/apropos",
   service: "/services",
   toilettage: "/toilettage",
   massage: "/massage",
@@ -24,4 +25,5 @@ export const PAGES = {
   contact: "Contact",
   equipe: "Notre équipe",
   actualites: "Nos actualités",
+  apropos: "À propos",
 }
